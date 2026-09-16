@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ===== HEAD: metadatos (la "inteligencia" no visible) ===== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+        content="Mapa mental del desarrollo web front-end: ciclo solicitud-respuesta, HTML semántico, CSS, Box Model, VS Code, SEO y accesibilidad.">
+  <meta name="author" content="Apuntes del curso de Lucas Dalto">
+
+  <title>Desarrollo Web desde Cero · Mapa mental de HTML y CSS</title>
+
+  <!-- Tipografía externa (Google Fonts) con alternativa del sistema -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS externo: la práctica profesional (cero estilos en línea) -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- ===== CABECERA ===== -->
+  <header>
+    <nav aria-label="Navegación principal">
+      <span>&lt;/&gt; WebMap</span>
+      <ul>
+        <li><a href="#mapa">Mapa mental</a></li>
+        <li><a href="#box-model">Box Model</a></li>
+        <li><a href="#herramientas">Herramientas</a></li>
+        <li><a href="#reglas">SEO y accesibilidad</a></li>
+        <li><a href="#video">Video</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO: aquí vive el ÚNICO h1 de toda la página ===== -->
+    <section>
+      <p>Apuntes · HTML + CSS</p>
+      <h1>Desarrollo Web desde Cero</h1>
+      <p>
+        Del ciclo <strong>solicitud → respuesta</strong> al <strong>Box Model</strong>:
+        el mapa mental con la lógica que sostiene la web.
+      </p>
+      <ul>
+        <li>6 ramas</li>
+        <li>HTML semántico</li>
+        <li>CSS profesional</li>
+        <li>SEO + accesibilidad</li>
+      </ul>
+    </section>
+
+    <!-- ===== MAPA MENTAL ===== -->
+    <section id="mapa" aria-labelledby="titulo-mapa">
+      <h2 id="titulo-mapa">🗺️ Mapa mental del curso</h2>
+      <p>
+        Un nodo central y seis ramas. La idea que las une: la web es una
+        conversación entre quien <em>solicita</em> y quien <em>responde</em>.
+      </p>
+
+      <div>
+        <!-- Nodo central del mapa -->
+        <p>🌐 Desarrollo Web</p>
+        <div aria-hidden="true"></div>
+
+        <!-- Ramas: cada una con su h3 (jerarquía h2 > h3, sin saltos) -->
+        <ul>
+          <li>
+            <h3>1 · Fundamentos de la web</h3>
+            <ul>
+              <li>Ciclo <strong>solicitud → respuesta</strong></li>
+              <li>El servidor es el “hotel” de recursos</li>
+              <li>La URL es la <strong>llave maestra</strong></li>
+              <li>El navegador es el <strong>intérprete</strong></li>
+              <li>HTML se lee línea a línea: no se compila</li>
+            </ul>
+          </li>
+
+          <li>
+            <h3>2 · HTML · la estructura</h3>
+            <ul>
+              <li>Lenguaje de <strong>marcado</strong>, no de programación</li>
+              <li>&lt;etiqueta&gt; contenido &lt;/etiqueta&gt; + atributos</li>
+              <li>Bloque (div, h1, p) frente a línea (span, a)</li>
+              <li>Esqueleto: doctype → html → head → body</li>
+            </ul>
+          </li>
+
+          <li>
+            <h3>3 · CSS · la presentación</h3>
+            <ul>
+              <li><code>selector { propiedad: valor; }</code></li>
+              <li>Estilo en <strong>archivo externo</strong> (profesional)</li>
+              <li>Tipografía: family, weight, line-height</li>
+              <li>Sobrescribe los estilos por defecto del navegador</li>
+            </ul>
+          </li>
+
+          <li>
+            <h3>4 · Box Model</h3>
+            <ul>
+              <li>Cada elemento es una caja de <strong>4 capas</strong></li>
+              <li>content → padding → border → margin</li>
+              <li>El margin separa: <strong>no</strong> es parte de la caja</li>
+              <li><strong>border-box</strong> = control total del tamaño</li>
+            </ul>
+          </li>
+
+          <li>
+            <h3>5 · Entorno de trabajo</h3>
+            <ul>
+              <li><strong>VS Code</strong>: editor que se vuelve IDE</li>
+              <li>Prettier · Live Server · Indent Rainbow</li>
+              <li>Image Preview: valida rutas al instante</li>
+              <li>Detalle completo en la tabla de abajo</li>
+            </ul>
+          </li>
+
+          <li>
+            <h3>6 · SEO + accesibilidad</h3>
+            <ul>
+              <li>Un solo <strong>h1</strong>: el tema central</li>
+              <li>Jerarquía <strong>sin saltos</strong>: h1 → h2 → h3</li>
+              <li><strong>alt</strong> descriptivo: Google lee, no ve</li>
+              <li>Etiquetas por <strong>significado</strong>, no por apariencia</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== BOX MODEL ===== -->
+    <section id="box-model" aria-labelledby="titulo-box">
+      <h2 id="titulo-box">📦 El Box Model, en vivo</h2>
+      <p>
+        Este diagrama no es una imagen: está construido con CSS real.
+        Cada capa usa exactamente la propiedad que representa.
+      </p>
+
+      <div role="img"
+           aria-label="Diagrama del Box Model: el contenido, envuelto en padding, borde y margin, de dentro hacia afuera.">
+        <div>
+          <span>margin</span>
+          <div>
+            <span>border</span>
+            <div>
+              <span>padding</span>
+              <div>
+                <span>content</span>
+                <p>Aquí viven el texto y las imágenes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <article>
+          <h3>content-box · por defecto</h3>
+          <p>El padding y el borde se <strong>suman</strong> al ancho declarado:
+             la caja crece y el diseño se descuadra.</p>
+        </article>
+        <article>
+          <h3>border-box · el paradigma moderno</h3>
+          <p>Padding y borde quedan <strong>dentro</strong> del tamaño definido:
+             lo que declaras es lo que mide. La opción profesional.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== HERRAMIENTAS ===== -->
+    <section id="herramientas" aria-labelledby="titulo-tools">
+      <h2 id="titulo-tools">🛠️ Entorno: VS Code y sus extensiones</h2>
+      <p>
+        La frontera entre un editor y un IDE no está en el programa,
+        está en las extensiones que le añades.
+      </p>
+
+      <div>
+        <table>
+          <caption>Las cuatro extensiones que convierten VS Code en un IDE completo</caption>
+          <thead>
+            <tr>
+              <th scope="col">Extensión</th>
+              <th scope="col">Beneficio operativo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Prettier</td>
+              <td>Formateo automático: código estandarizado y legible.</td>
+            </tr>
+            <tr>
+              <td>Live Server</td>
+              <td>Servidor local con recarga en tiempo real (adiós al F5 manual).</td>
+            </tr>
+            <tr>
+              <td>Indent Rainbow</td>
+              <td>Colorea la indentación: la jerarquía padre-hijo se ve a simple vista.</td>
+            </tr>
+            <tr>
+              <td>Image Preview</td>
+              <td>Miniaturas en el margen: valida rutas de imágenes antes de romperlas.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== REGLAS DE ORO ===== -->
+    <section id="reglas" aria-labelledby="titulo-reglas">
+      <h2 id="titulo-reglas">📈 Reglas de oro: SEO y accesibilidad</h2>
+      <p>
+        Un sitio bonito pero mal estructurado es invisible para Google
+        e ilegible para un lector de pantalla.
+      </p>
+
+      <div>
+        <article>
+          <h3>Para el algoritmo</h3>
+          <ul>
+            <li>Un único <strong>h1</strong>: el tema central de la página</li>
+            <li>Progresión lógica h1 → h2 → h3, sin saltos</li>
+            <li><strong>alt</strong> descriptivo en cada imagen</li>
+            <li>title y meta description con información real</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Para las personas</h3>
+          <ul>
+            <li>Etiquetas por significado, no por apariencia</li>
+            <li>&lt;strong&gt; en lugar de &lt;b&gt;: énfasis semántico</li>
+            <li>lang="es": el lector de pantalla sabe cómo pronunciar</li>
+            <li>La estructura es el mapa de las tecnologías de asistencia</li>
+          </ul>
+        </article>
+      </div>
+
+      <blockquote>
+        <p>“La web opera bajo un principio binario inquebrantable: una entidad
+           solicita y otra entrega. Comprender este flujo es la diferencia entre
+           escribir código por inercia y diseñar sistemas con capacidad diagnóstica.”</p>
+        <footer>— Guía Maestra de Arquitectura Lógica</footer>
+      </blockquote>
+    </section>
+
+    <!-- ===== GALERÍA VISUAL ===== -->
+    <section id="galeria" aria-labelledby="titulo-galeria">
+      <h2 id="titulo-galeria">📸 Recursos visuales del curso</h2>
+      <p>
+        Estas imágenes acompañan las ideas principales del curso para que la
+        página tenga un hilo visual más claro: estructura, estilo, caja y acceso.
+      </p>
+
+      <div>
+        <figure>
+          <img src="./img/images.jpg" alt="Ejemplo visual de una interfaz web con estructura y contenido organizado." loading="lazy">
+          <figcaption>HTML: la estructura que da orden al contenido.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="./img/images (2).jpg" alt="Ejemplo visual de una página web con elementos de diseño y estilo." loading="lazy">
+          <figcaption>CSS: la presentación que le da estilo y personalidad.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="./img/images (3).jpg" alt="Representación visual de una caja, padding, borde y margen en diseño web." loading="lazy">
+          <figcaption>Box Model: cada elemento se comporta como una caja.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="./img/nosotros.jpeg" alt="Imagen de trabajo en equipo o presentación del proyecto web." loading="lazy">
+          <figcaption>SEO y accesibilidad: una web pensada para personas y buscadores.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== VIDEO DEL CURSO ===== -->
+    <section id="video" aria-labelledby="titulo-video">
+      <h2 id="titulo-video">🎬 El desarrollo web en video</h2>
+      <p>
+        Repasa cómo se relacionan los servidores, HTML y CSS en el flujo
+        que convierte el código en una página web.
+      </p>
+
+      <figure>
+        <video controls preload="metadata">
+          <source src="./img/Servidores,_HTML_y_CSS.mp4" type="video/mp4">
+          Tu navegador no puede reproducir este video.
+          <a href="./img/Servidores,_HTML_y_CSS.mp4">Descargar el video</a>
+        </video>
+        <figcaption>
+          Video explicativo sobre servidores, HTML y CSS.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ===== IMAGEN DEL CURSO ===== -->
+    <section id="concepto" aria-labelledby="titulo-figura">
+      <h2 id="titulo-figura">🖼️ El concepto en una imagen</h2>
+      <p>
+        El flujo completo del front-end: el código HTML estructura el contenido,
+        el CSS lo estiliza y el servidor lo entrega al navegador.
+      </p>
+
+      <figure>
+        <img
+          src="./img/concepto_html_css_web.png"
+          alt="Portátil con la pantalla dividida en dos: a la izquierda, código HTML con las etiquetas body, header y h1; a la derecha, la página web estilizada resultante con imagen y botones. Al fondo, una pila de servidores y flechas que representan la transferencia de datos."
+          width="900" height="600" loading="lazy">
+        <figcaption>
+          El servidor entrega los archivos; el navegador los interpreta y
+          convierte el marcado en la interfaz final.
+        </figcaption>
+      </figure>
+
+      <p>
+        💡 La imagen ahora se carga desde una ruta local dentro de la carpeta
+        <strong>img</strong> para evitar enlaces rotos.
+      </p>
+    </section>
+
+    <!-- ===== CHULETA ===== -->
+    <aside aria-labelledby="titulo-cheat">
+      <h2 id="titulo-cheat">🧭 Chuleta: esqueleto mínimo</h2>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Título de la pestaña&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Tema central (único en la página)&lt;/h1&gt;
+    &lt;h2&gt;Sección&lt;/h2&gt;
+    &lt;h3&gt;Subsección&lt;/h3&gt;
+    &lt;img src="./foto.jpg" alt="Descripción para Google y lectores de pantalla"&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </aside>
+
+  </main>
+
+  <!-- ===== PIE ===== -->
+  <footer>
+    <p>
+      Apuntes elaborados a partir del curso de desarrollo web de Lucas Dalto
+      y de la Guía Maestra de Arquitectura Lógica ·
+      Estructura en HTML semántico, estilos en CSS externo.
+    </p>
+  </footer>
+
+</body>
+</html>

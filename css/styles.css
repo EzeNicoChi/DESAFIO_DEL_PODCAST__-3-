@@ -1,0 +1,519 @@
+/* ==========================================================================
+   styles.css — Hoja de estilos externa (Sin clases - Uso de etiquetas y selectores avanzados)
+   1. Variables y reset      5. Box Model en vivo
+   2. Base y tipografía      6. Tabla de herramientas
+   3. Cabecera y hero        7. Reglas, cita, figura y chuleta
+   4. Mapa mental            8. Pie y responsive
+   ========================================================================== */
+
+/* ----- 1 · Variables: cambiar todo el tema desde un solo lugar ----- */
+:root {
+  --fondo:        #0b1220;
+  --superficie:   #141d31;
+  --superficie-2: #1b2740;
+  --texto:        #e8eef9;
+  --texto-suave:  #9db0cc;
+  --borde:        #293a5c;
+  --radio:        16px;
+
+  /* Paleta de las ramas del mapa */
+  --c-web:  #38bdf8;   /* azul    · fundamentos   */
+  --c-html: #fb923c;   /* naranja · estructura    */
+  --c-css:  #22d3ee;   /* cian    · presentación  */
+  --c-box:  #a78bfa;   /* violeta · box model     */
+  --c-tool: #fbbf24;   /* ámbar   · herramientas  */
+  --c-seo:  #4ade80;   /* verde   · seo + a11y    */
+}
+
+/* ----- 2 · Reset + paradigma border-box (control total del tamaño) ----- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+/* Respeto a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif; /* fallback del sistema */
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.65;               /* interlineado legible */
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+main {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+section { margin-block: 4.5rem; }
+
+/* Para que la cabecera fija no tape los títulos al navegar por anclas */
+section[id] { scroll-margin-top: 85px; }
+
+section h2 { font-size: 1.85rem; font-weight: 700; }
+
+section > p {
+  color: var(--texto-suave);
+  max-width: 640px;
+  margin-block: .6rem 2.4rem;
+}
+
+/* ----- 3 · Cabecera, navegación y hero ----- */
+body > header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(11, 18, 32, .88);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--borde);
+}
+
+header > nav {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: .9rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .8rem 1.5rem;
+}
+
+header > nav > span { font-weight: 700; color: var(--c-css); }
+
+header ul { display: flex; flex-wrap: wrap; gap: 1.4rem; list-style: none; }
+
+header ul a {
+  color: var(--texto-suave);
+  text-decoration: none;
+  font-size: .9rem;
+  transition: color .2s;
+}
+
+header ul a:hover { color: var(--texto); }
+
+a:focus-visible {
+  outline: 2px solid var(--c-css);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Hero section (primera sección dentro de main) */
+main > section:first-of-type {
+  text-align: center;
+  max-width: 760px;
+  margin-inline: auto;
+  padding-block: 3.5rem .5rem;
+}
+
+main > section:first-of-type > p:first-of-type {
+  color: var(--c-css);
+  font-size: .78rem;
+  font-weight: 600;
+  text-transform: uppercase;       /* mayúsculas solo visuales */
+  letter-spacing: .28em;
+  margin-bottom: 1.1rem;
+}
+
+main > section:first-of-type h1 {
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem);   /* tipografía fluida */
+  font-weight: 700;
+  line-height: 1.12;
+  color: var(--texto);
+}
+
+/* Degradado del título con fallback */
+@supports (-webkit-background-clip: text) {
+  main > section:first-of-type h1 {
+    background: linear-gradient(90deg, var(--c-web), var(--c-box));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+main > section:first-of-type > p:nth-of-type(2) { 
+  color: var(--texto-suave); 
+  margin-block: 1.3rem 1.8rem; 
+}
+
+main > section:first-of-type > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .6rem;
+  list-style: none;
+}
+
+main > section:first-of-type > ul > li {
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto-suave);
+  font-size: .8rem;
+  padding: .35rem .95rem;
+  border-radius: 999px;
+}
+
+/* ----- 4 · Mapa mental: nodo → conector → línea → ramas ----- */
+#mapa > div { display: flex; flex-direction: column; }
+
+#mapa > div > p {
+  align-self: center;
+  padding: 1rem 2.4rem;
+  font-size: 1.28rem;
+  font-weight: 700;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1d4ed8, var(--c-web));
+  box-shadow: 0 10px 30px rgba(56, 189, 248, .28);
+}
+
+#mapa > div > div[aria-hidden="true"] {
+  align-self: center;
+  width: 2px;
+  height: 28px;
+  background: var(--borde);
+}
+
+#mapa > div > ul {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;              /* hueco exacto que ocupan los conectores */
+  padding-top: 28px;      /* sitio para la línea horizontal + conectores fila 1 */
+  list-style: none;
+}
+
+/* Línea horizontal del mapa mental */
+#mapa > div > ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc((100% - 56px) / 6);
+  right: calc((100% - 56px) / 6);
+  height: 2px;
+  background: var(--borde);
+}
+
+#mapa > div > ul > li {
+  --c: var(--c-web);      /* color base por defecto */
+  position: relative;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-top: 3px solid var(--c);
+  border-radius: var(--radio);
+  padding: 1.35rem 1.25rem 1.05rem;
+}
+
+/* Conector vertical */
+#mapa > div > ul > li::before {
+  content: "";
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  margin-left: -1px;
+  width: 2px;
+  height: 28px;
+  background: var(--c);
+}
+
+#mapa > div > ul > li h3 { color: var(--c); font-size: 1.02rem; margin-bottom: .85rem; }
+
+#mapa > div > ul > li ul { list-style: none; }
+
+#mapa > div > ul > li li {
+  position: relative;
+  padding-left: 1.15rem;
+  margin-block: .45rem;
+  font-size: .92rem;
+  color: var(--texto-suave);
+}
+
+#mapa > div > ul > li li::before { content: "▸"; position: absolute; left: 0; color: var(--c); }
+
+#mapa > div > ul > li li strong { color: var(--texto); }
+
+/* Asignación de colores por posición a cada rama */
+#mapa > div > ul > li:nth-child(1) { --c: var(--c-web); }
+#mapa > div > ul > li:nth-child(2) { --c: var(--c-html); }
+#mapa > div > ul > li:nth-child(3) { --c: var(--c-css); }
+#mapa > div > ul > li:nth-child(4) { --c: var(--c-box); }
+#mapa > div > ul > li:nth-child(5) { --c: var(--c-tool); }
+#mapa > div > ul > li:nth-child(6) { --c: var(--c-seo); }
+
+/* ----- 5 · Box Model en vivo ----- */
+#box-model > div[role="img"] { margin-block: .5rem 1.6rem; }
+
+/* Contenedores anidados de las capas */
+#box-model div[role="img"] div {
+  position: relative;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+#box-model div[role="img"] div:hover { filter: brightness(1.18); }
+
+#box-model div[role="img"] span {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: .85;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+
+/* Nivel 1: Margin */
+#box-model div[role="img"] > div {
+  background: rgba(251, 146, 60, .14);
+  border: 2px dashed var(--c-html);
+}
+
+/* Nivel 2: Border */
+#box-model div[role="img"] > div > div {
+  background: rgba(250, 204, 21, .22);
+  border: 6px solid #facc15;
+}
+
+/* Nivel 3: Padding */
+#box-model div[role="img"] > div > div > div {
+  background: rgba(74, 222, 128, .16);
+  border: 1px solid rgba(74, 222, 128, .45);
+}
+
+/* Nivel 4: Content */
+#box-model div[role="img"] > div > div > div > div {
+  background: rgba(56, 189, 248, .18);
+  border: 1px solid rgba(56, 189, 248, .5);
+  text-align: center;
+  padding: 24px;
+}
+
+#box-model div[role="img"] p { font-size: .95rem; color: var(--texto); }
+
+/* Grillas genéricas (Box model, Reglas y Galería) */
+#box-model > div:last-of-type,
+#reglas > div:first-of-type,
+#galeria > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.3rem;
+}
+
+#box-model article,
+#reglas article,
+#galeria figure {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1.3rem 1.35rem;
+}
+
+#galeria figure {
+  padding: 0;
+  overflow: hidden;
+}
+
+#galeria figure img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+#galeria figcaption {
+  padding: 1rem 1.1rem;
+  color: var(--texto-suave);
+  font-size: .9rem;
+  border-top: 1px solid var(--borde);
+}
+
+#box-model article h3,
+#reglas article h3 { font-size: 1.02rem; margin-bottom: .6rem; }
+
+#box-model article p { font-size: .92rem; color: var(--texto-suave); }
+
+#box-model article:first-of-type { border-top: 3px solid #f87171; }
+#box-model article:first-of-type h3 { color: #f87171; }
+
+#box-model article:last-of-type { border-top: 3px solid var(--c-seo); }
+#box-model article:last-of-type h3 { color: var(--c-seo); }
+
+/* ----- 6 · Tabla de herramientas ----- */
+#herramientas > div {
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--superficie);
+  overflow-x: auto;
+}
+
+table { width: 100%; border-collapse: collapse; min-width: 540px; }
+
+caption {
+  caption-side: top;
+  text-align: left;
+  padding: 1.1rem 1.3rem .4rem;
+  font-size: .88rem;
+  color: var(--texto-suave);
+}
+
+th, td {
+  text-align: left;
+  padding: .85rem 1.3rem;
+  font-size: .93rem;
+  border-top: 1px solid var(--borde);
+}
+
+thead th { color: var(--c-tool); border-top: none; font-weight: 600; }
+
+tbody td:first-child { font-weight: 600; white-space: nowrap; }
+tbody td:last-child  { color: var(--texto-suave); }
+tbody tr:hover { background: var(--superficie-2); }
+
+/* ----- 7 · Reglas, cita, figura y chuleta ----- */
+#reglas article:first-of-type h3 { color: var(--c-web); }
+#reglas article:last-of-type h3  { color: var(--c-seo); }
+
+#reglas article ul { list-style: none; }
+
+#reglas article li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-block: .55rem;
+  font-size: .92rem;
+  color: var(--texto-suave);
+}
+
+#reglas article li::before { content: "✅"; position: absolute; left: 0; font-size: .85rem; }
+#reglas article li strong { color: var(--texto); }
+
+blockquote {
+  margin-block: 2.6rem;
+  padding: 1.45rem 1.7rem;
+  background: var(--superficie);
+  border-left: 4px solid var(--c-css);
+  border-radius: 0 var(--radio) var(--radio) 0;
+}
+blockquote p { color: var(--texto-suave); font-style: italic; }
+blockquote footer { margin-top: .8rem; font-size: .85rem; color: var(--texto-suave); }
+
+#concepto figure {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+#video figure {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+#video video {
+  display: block;
+  width: 100%;
+  max-height: 620px;
+  background: #000;
+}
+
+#video figcaption {
+  padding: 1rem 1.3rem;
+  border-top: 1px solid var(--borde);
+  font-size: .9rem;
+  color: var(--texto-suave);
+}
+
+#concepto figcaption {
+  padding: 1rem 1.3rem;
+  border-top: 1px solid var(--borde);
+  font-size: .9rem;
+  color: var(--texto-suave);
+}
+
+#concepto > p:last-of-type {
+  margin-top: 1.2rem;
+  padding: 1rem 1.3rem;
+  background: rgba(56, 189, 248, .08);
+  border: 1px dashed rgba(56, 189, 248, .4);
+  border-radius: var(--radio);
+  font-size: .9rem;
+  color: var(--texto-suave);
+}
+
+code {
+  font-family: "Cascadia Code", Consolas, "Courier New", monospace;
+  font-size: .88em;
+  background: var(--superficie-2);
+  padding: .12em .45em;
+  border-radius: 6px;
+  color: var(--c-css);
+}
+
+aside { margin-block: 4.5rem; }
+
+aside pre {
+  margin-top: 1.2rem;
+  background: #0a0f1d;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 1.25rem 1.4rem;
+  overflow-x: auto;
+  font-family: "Cascadia Code", Consolas, "Courier New", monospace;
+  font-size: .84rem;
+  line-height: 1.75;
+  color: #c7d5ef;
+}
+
+aside pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+
+/* ----- 8 · Pie y responsive ----- */
+body > footer {
+  border-top: 1px solid var(--borde);
+  margin-top: 2rem;
+  padding: 2.2rem 1.25rem 2.8rem;
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: .88rem;
+}
+
+/* Tablet: mapa a 2 columnas */
+@media (max-width: 900px) {
+  #mapa > div > ul { grid-template-columns: repeat(2, 1fr); }
+  #mapa > div > ul::before {
+    left: calc((100% - 28px) / 4);
+    right: calc((100% - 28px) / 4);
+  }
+}
+
+/* Móvil: el mapa se lee como línea de tiempo */
+@media (max-width: 600px) {
+  #mapa > div > ul { grid-template-columns: 1fr; }
+  #mapa > div > ul::before { display: none; }
+  header > nav {
+    justify-content: center;
+    padding-inline: .8rem;
+  }
+  header ul {
+    justify-content: center;
+    gap: .65rem 1rem;
+  }
+  header ul a { font-size: .82rem; }
+  main > section:first-of-type { padding-top: 2.5rem; }
+  #box-model div[role="img"] div { padding: 22px; }
+  #box-model div[role="img"] > div > div > div > div { padding: 18px; }
+}
